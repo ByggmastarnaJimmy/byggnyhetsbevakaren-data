@@ -1,0 +1,30 @@
+name: Uppdatera byggnyheter dagligen
+
+
+on:
+  schedule:
+    - cron: '58 4 * * *' # Kör kl. 05:58 UTC = 06:58 svensk tid
+
+  workflow_dispatch:
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Klona repo
+        uses: actions/checkout@v3
+
+      - name: Skapa ny sammanfattning
+        run: |
+          echo '{
+            "datum": "'$(date +%Y-%m-%d)'",
+            "sammanfattning": "Byggnyhetsbevakaren: Sammanfattning för $(date +%Y-%m-%d). NCC har tecknat nytt avtal i Nyköping. Peab investerar i hållbart byggande. Webinarium om energieffektivisering 12 november."
+          }' > sammanfattning.json
+
+      - name: Ladda upp ändringar
+        run: |
+          git config --global user.name "Byggnyhetsbevakaren"
+          git config --global user.email "agent@byggbevakaren.se"
+          git add sammanfattning.json
+          git commit -m "Uppdaterar nyheter för $(date +%Y-%m-%d)"
+          git push
