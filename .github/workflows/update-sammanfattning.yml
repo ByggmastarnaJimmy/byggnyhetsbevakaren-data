@@ -1,13 +1,14 @@
-name: Uppdatera byggnyheter dagligen
-
+name: Uppdatera sammanfattning.json
 
 on:
   schedule:
-    - cron: '58 4 * * *' # Kör kl. 05:58 UTC = 06:58 svensk tid
-  workflow_dispatch: # Möjlighet att köra manuellt
+    - cron: "0 2 * * *" # Kör varje natt kl 02:00
+  workflow_dispatch: # Gör att du kan köra manuellt
 
 jobs:
   update-summary:
+    permissions:
+      contents: write # Ger rätt att pusha ändringar
     runs-on: ubuntu-latest
 
     steps:
@@ -33,5 +34,7 @@ jobs:
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
           git add sammanfattning.json
-          git commit -m "Automatisk uppdatering av sammanfattning.json"
+          git commit -m "Automatisk uppdatering av sammanfattning.json" || echo "Inga ändringar att committa"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
