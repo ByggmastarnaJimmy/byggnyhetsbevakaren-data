@@ -1,5 +1,5 @@
 {
-  "datum": "2025-11-08",
+  "datum": "2025-11-10",
   "nyheter": {
     "Projekt": [
       {
@@ -10,9 +10,29 @@
     ],
     "Bransch": [
       {
-        "titel": "Byggföretagen satsar på hållbarhet",
+        "titel": "Förmåner och rabatter",
         "källa": "Byggföretagen",
-        "url": "https://www.byggforetagen.se/hallbarhet"
+        "url": "https://byggforetagen.se/medlemskap/"
+      },
+      {
+        "titel": "Förmåner och rabatter",
+        "källa": "Byggföretagen",
+        "url": "https://byggforetagen.se/medlemskap/"
+      },
+      {
+        "titel": "Företagarservice start",
+        "källa": "Byggföretagen",
+        "url": "https://byggforetagen.se/foretagarservice/"
+      },
+      {
+        "titel": "Arbetsrätt och kollektivavtal",
+        "källa": "Byggföretagen",
+        "url": "https://medlem.arbetsgivarguiden.se/oversikt?mof=BF"
+      },
+      {
+        "titel": "Arbetsmiljö och säkerhet",
+        "källa": "Byggföretagen",
+        "url": "https://byggforetagen.se/situation/arbetsmiljo-och-sakerhet/"
       }
     ],
     "Arbetsmarknad": [
