@@ -3,7 +3,7 @@ name: Uppdatera sammanfattning.json
 on:
   schedule:
     - cron: "0 2 * * *" # Kör varje natt kl 02:00
-  workflow_dispatch: # Gör att du kan köra manuellt
+  workflow_dispatch:
 
 jobs:
   update-summary:
@@ -35,6 +35,5 @@ jobs:
           git config --global user.email "action@github.com"
           git add sammanfattning.json
           git commit -m "Automatisk uppdatering av sammanfattning.json" || echo "Inga ändringar att committa"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git push origin HEAD:${{ github.ref }}
